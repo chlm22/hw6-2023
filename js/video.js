@@ -20,7 +20,7 @@ function playButton(){
 	videoHtml.play();
 }
 const playBtn = document.querySelector("#play");
-playBtn.addEventListener("click", playBtn);
+playBtn.addEventListener("click", playButton);
 
 
 // Pause Button	Pause the video.
@@ -45,21 +45,13 @@ pauseBtn.addEventListener("click", pauseButton);
 
 // Mute	Mute/unmute the video and update the text in the button.
 const muteBtn = document.getElementById("mute");
-function enableMute(){
-	videoHtml.muted = true;
-}
-
-function disableMute(){
-	videoHtml.muted = false;
-}
-
 function checkMute(){
 	if(videoHtml.muted){
-		disableMute;
+		videoHtml.muted = false;
 		console.log("Video now UNmuted.");
 	}
 	else{
-		enableMute;
+		videoHtml.muted = true;
 		console.log("Video now muted.");
 	}
 }
@@ -67,15 +59,23 @@ function checkMute(){
 muteBtn.addEventListener("click",checkMute);
 
 // Volume Slider	Change the volume based on the slider and update the volume information.
+const sliderBtn = document.getElementById("slider");
+const volumeId = document.getElementById("volume");
 
+sliderBtn.addEventListener("input", () => {
+	videoHtml.volume = sliderBtn.value;
+	// updateVolumeDisplay();
+});
 
-
+// function updateVolumeDisplay(){
+// 	volumeId.textContent = ${Math.floor(videoHtml.volume*100)}
+// }
 
 // Styled	Utilize the existing oldSchool class on the video element
 const vintageBtn = document.getElementById("vintage");
 
 function vintageButton(){
-	videoHtml.style.filter = 'graysacle(1)';
+	videoHtml.style.filter = 'grayscale(1)';
 }
 
 vintageBtn.addEventListener("click", vintageButton);
