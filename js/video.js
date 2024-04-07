@@ -83,13 +83,27 @@ function checkMute(){
 muteBtn.addEventListener("click",checkMute);
 
 // Volume Slider	Change the volume based on the slider and update the volume information.
-// const sliderBtn = document.getElementById("slider");
-// const volumeId = document.getElementById("volume");
 
-// sliderBtn.addEventListener("input", () => {
-// 	videoHtml.volume = sliderBtn.value;
-// 	// updateVolumeDisplay();
+
+const sliderBtn = document.getElementById("slider");
+const volumeId = document.getElementById("volume");
+console.log("The current value is "+ videoHtml.volume);
+function volumeSlider(){
+
+	videoHtml.volume = sliderBtn.value / 100;
+	// sliderBtn.value = (videoHtml.volume)/100;
+    volumeId.innerHTML = sliderBtn.value;
+	console.log("The current value is "+ videoHtml.volume);
+	// sliderBtn.oninput=function(){
+	// 	volumeId.innerHTML=this.value;
+	// }
+// 	sliderBtn.addEventListener("input", () => {
+// 		videoHtml.volume= sliderBtn.value;
 // });
+	// console.log("The current value is "+ videoHtml.volume/100);
+}
+sliderBtn.addEventListener("change", volumeSlider);
+
 
 // function updateVolumeDisplay(){
 // 	volumeId.textContent = ${Math.floor(videoHtml.volume*100)}
