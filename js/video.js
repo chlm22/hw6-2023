@@ -33,14 +33,38 @@ pauseBtn.addEventListener("click", pauseButton);
 
 
 // Slow Down	Slow the current video speed by 10% each time the button is clicked and log the new speed to the console.  
+const slowBtn = document.getElementById("slower");
+function slowButton(){
+	console.log("slowed down video");
+	videoHtml.playbackRate -= 0.1;
+	console.log(videoHtml.playbackRate);
+}
+slowBtn.addEventListener("click", slowButton);
 
 
 // Speed Up	Increase the current video speed each time the button is clicked and log the new speed to the console.  Change it by an amount proportional to the slow down. CHECK THIS!!  If you slow down three times and then speed up three times you should be within 5 digits of 100% again.
 
+const fasterBtn = document.getElementById("faster");
+function fasterButton(){
+	console.log("speed up video");
+	videoHtml.playbackRate += 0.1;
+	console.log("Speed is " + videoHtml.playbackRate);
+}
+fasterBtn.addEventListener("click", fasterButton);
+
 
 // Skip Ahead	Advance the current video by 10 seconds.  If the video length has been exceeded go back to the start of the video - no farther.   Log the current location of the video.
-
-
+const skipBtn = document.getElementById("skip");
+function skipButton(){
+	console.log("Skip Ahead");
+	let time = videoHtml.currentTime+10;
+	videoHtml.currentTime += 10;
+	if (time < 0 || time > videoHtml.duration){
+		time = 0;
+	}
+	console.log("Current video time is " + time);
+}
+skipBtn.addEventListener("click", skipButton);
 
 
 // Mute	Mute/unmute the video and update the text in the button.
@@ -59,13 +83,13 @@ function checkMute(){
 muteBtn.addEventListener("click",checkMute);
 
 // Volume Slider	Change the volume based on the slider and update the volume information.
-const sliderBtn = document.getElementById("slider");
-const volumeId = document.getElementById("volume");
+// const sliderBtn = document.getElementById("slider");
+// const volumeId = document.getElementById("volume");
 
-sliderBtn.addEventListener("input", () => {
-	videoHtml.volume = sliderBtn.value;
-	// updateVolumeDisplay();
-});
+// sliderBtn.addEventListener("input", () => {
+// 	videoHtml.volume = sliderBtn.value;
+// 	// updateVolumeDisplay();
+// });
 
 // function updateVolumeDisplay(){
 // 	volumeId.textContent = ${Math.floor(videoHtml.volume*100)}
